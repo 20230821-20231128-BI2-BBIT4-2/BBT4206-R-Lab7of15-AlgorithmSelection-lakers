@@ -437,5 +437,11 @@ head(iris)
 # Summary statistics of Iris dataset
 summary(iris)
 
+# Check for missing values (There are no missing values in the iris dataset)
+any_na(iris)
+n_miss(iris)
+prop_miss(iris)
+miss_var_summary(iris)
+gg_miss_var(iris)
 
 
