@@ -74,3 +74,10 @@ print(sonar_caret_model_logistic)
 predictions <- predict(sonar_caret_model_logistic,
                        sonar_test[, -ncol(sonar_test)])  # Exclude the last column which is the target variable
 
+# Display the model's evaluation metrics
+confusion_matrix <- confusionMatrix(predictions, sonar_test$Class)
+print(confusion_matrix)
+
+# Plot the confusion matrix
+fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
+             main = "Confusion Matrix")
