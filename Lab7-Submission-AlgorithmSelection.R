@@ -83,3 +83,13 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
              main = "Confusion Matrix")
 
 ## 3. Linear Discriminant Analysis
+#Load dataset
+data(Sonar)
+
+# Define a 70:30 train:test data split for LDA
+set.seed(123)  # For reproducibility
+train_index <- createDataPartition(Sonar$Class,
+                                   p = 0.7,
+                                   list = FALSE)
+sonar_train <- Sonar[train_index, ]
+sonar_test <- Sonar[-train_index, ]
