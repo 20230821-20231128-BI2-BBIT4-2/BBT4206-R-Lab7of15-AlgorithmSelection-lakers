@@ -402,3 +402,25 @@ print(model_svm_reg)
 # Make predictions
 predictions <- predict(model_svm_reg, newdata = swiss_test[, predictors])
 
+# Calculate evaluation metrics
+# RMSE
+rmse <- sqrt(mean((swiss_test[[target_var]] - predictions)^2))
+print(paste("RMSE =", sprintf(rmse, fmt = "%#.4f")))
+
+# SSR
+ssr <- sum((swiss_test[[target_var]] - predictions)^2)
+print(paste("SSR =", sprintf(ssr, fmt = "%#.4f")))
+
+# SST
+sst <- sum((swiss_test[[target_var]] - mean(swiss_test[[target_var]]))^2)
+print(paste("SST =", sprintf(sst, fmt = "%#.4f")))
+
+# R Squared
+r_squared <- 1 - (ssr / sst)
+print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
+
+# MAE
+absolute_errors <- abs(predictions - swiss_test[[target_var]])
+mae <- mean(absolute_errors)
+print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
+
