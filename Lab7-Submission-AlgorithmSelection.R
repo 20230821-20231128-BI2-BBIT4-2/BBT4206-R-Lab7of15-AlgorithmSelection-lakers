@@ -279,4 +279,8 @@ train_index <- createDataPartition(Sonar$Class, p = 0.7, list = FALSE)
 sonar_train <- Sonar[train_index, ]
 sonar_test <- Sonar[-train_index, ]
 
+# Train the kNN model with 10-fold cross-validation and data standardization
+train_control <- trainControl(method = "cv", number = 10)
+model_knn <- train(Class ~ ., data = sonar_train, method = "knn", metric = "Accuracy",
+                   preProcess = c("center", "scale"), trControl = train_control)
 
