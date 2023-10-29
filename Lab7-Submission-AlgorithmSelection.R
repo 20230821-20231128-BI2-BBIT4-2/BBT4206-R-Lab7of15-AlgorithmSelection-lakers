@@ -217,4 +217,24 @@ model_cart <- train(mpg ~ ., data = mtcars, method = "rpart", metric = "RMSE", t
 # Display the model's details
 print(model_cart)
 
+#Make predictions
+predictions <- predict(model_cart, mtcars_test)
+
+# Calculate evaluation metrics
+rmse <- sqrt(mean((mtcars_test$mpg - predictions)^2))
+print(paste("RMSE =", sprintf(rmse, fmt = "%#.4f")))
+
+ssr <- sum((mtcars_test$mpg - predictions)^2)
+print(paste("SSR =", sprintf(ssr, fmt = "%#.4f")))
+
+sst <- sum((mtcars_test$mpg - mean(mtcars_test$mpg))^2)
+print(paste("SST =", sprintf(sst, fmt = "%#.4f")))
+
+r_squared <- 1 - (ssr / sst)
+print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
+
+absolute_errors <- abs(predictions - mtcars_test$mpg)
+mae <- mean(absolute_errors)
+print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
+
 
