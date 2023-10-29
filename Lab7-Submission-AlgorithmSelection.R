@@ -602,6 +602,29 @@ itemFrequencyPlot(groceries_transactions, topN = 10, type = "relative",
                   main = "Relative Item Frequency Plot",
                   horiz = TRUE)
 
+# Print the summary and inspect the association rules (Option 1)
+install.packages("arulesViz")  # Install the arulesViz package
+library(arulesViz)  # Load the arulesViz package
+summary(association_rules_stock_code)
+inspect(association_rules_stock_code)
+inspect(head(association_rules_stock_code, 10))  # Viewing the top 10 rules
+plot(association_rules_stock_code)
+
+# Remove redundant rules
+redundant_rules <- which(colSums(is.subset(association_rules_stock_code,
+                                           association_rules_stock_code)) > 1)
+length(redundant_rules)
+association_rules_non_redundant <- association_rules_stock_code[-redundant_rules]
+
+# Display summary and inspect non-redundant rules
+summary(association_rules_non_redundant)
+inspect(association_rules_non_redundant)
+
+# Write the non-redundant rules to a CSV file
+write(association_rules_non_redundant,
+      file = "rules/association_rules_based_on_stock_code.csv")
+
+
 # Create a transactions object
 groceries_transactions <- as(Groceries, "transactions")
 
