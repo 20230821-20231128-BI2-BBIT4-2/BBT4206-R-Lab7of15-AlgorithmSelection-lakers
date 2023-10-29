@@ -353,3 +353,7 @@ data(iris)
 target_var <- "Species"  # Target variable
 predictors <- c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")  # Predictors
 
+# Define a 70:30 train:test data split of the iris dataset
+train_index <- createDataPartition(iris[[target_var]], p = 0.7, list = FALSE)
+iris_train <- iris[train_index, ]
+iris_test <- iris[-train_index, ]
