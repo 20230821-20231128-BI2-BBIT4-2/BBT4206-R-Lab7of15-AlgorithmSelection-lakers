@@ -302,6 +302,9 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), m
 
 data("airquality")
 
+# Replace missing values with mean for the target variable "Ozone"
+airquality$Ozone[is.na(airquality$Ozone)] <- mean(airquality$Ozone, na.rm = TRUE)
+
 # Define a target variable and predictors for regression
 target_var <- "Ozone"  # Target variable
 predictors <- c("Solar.R", "Wind", "Temp")  # Predictors for the regression
