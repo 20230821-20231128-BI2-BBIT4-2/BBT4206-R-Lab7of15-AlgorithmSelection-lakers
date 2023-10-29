@@ -200,3 +200,6 @@ print(confusion_matrix)
 fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
              main = "Confusion Matrix")
 
+## 1b Decision tree for a regression problem with CARET
+
+
