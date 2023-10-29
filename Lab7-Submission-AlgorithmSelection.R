@@ -265,3 +265,5 @@ print(confusion_matrix)
 
 # Plot the confusion matrix
 fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), main = "Confusion Matrix")
+
+## 3.  k-Nearest Neighbours
