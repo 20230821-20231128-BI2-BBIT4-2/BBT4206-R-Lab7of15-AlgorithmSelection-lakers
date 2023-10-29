@@ -258,3 +258,10 @@ print(model_nb)
 
 # Make predictions on the test set
 predictions <- predict(model_nb, newdata = sonar_test)
+
+# Display the model's evaluation metrics (confusion matrix)
+confusion_matrix <- confusionMatrix(predictions, sonar_test$Class)
+print(confusion_matrix)
+
+# Plot the confusion matrix
+fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), main = "Confusion Matrix")
