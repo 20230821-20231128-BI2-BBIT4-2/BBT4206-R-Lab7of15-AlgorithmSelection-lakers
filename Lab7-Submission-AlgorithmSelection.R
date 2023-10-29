@@ -569,5 +569,11 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width, color = cluster_id)) +
   ylab("Sepal Width")
 
 ###7c: Algorithm Selection for Association Rule Learning
+# Load the arules package
+library(arules)
+
+# Load the Groceries dataset
+data("Groceries")
+
 
 
