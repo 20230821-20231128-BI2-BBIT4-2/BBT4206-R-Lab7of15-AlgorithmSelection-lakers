@@ -344,3 +344,9 @@ print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 ## 4.  Support Vector Machine
 ### 4a SVM Classifier for a classification problem with CARET
 
+# Load the necessary libraries
+library(caret)
+# Load the iris dataset (it's a built-in dataset)
+data(iris)
+
+
