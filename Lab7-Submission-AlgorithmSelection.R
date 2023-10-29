@@ -268,3 +268,8 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), m
 
 ## 3.  k-Nearest Neighbours
 ### 3a kNN for a classification problem with CARET's train function
+
+#Load dataset
+library(mlbench)
+data("Sonar")
+
