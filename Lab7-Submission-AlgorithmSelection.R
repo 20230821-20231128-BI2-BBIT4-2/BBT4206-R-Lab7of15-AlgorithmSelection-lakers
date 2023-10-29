@@ -57,3 +57,20 @@ train_index <- createDataPartition(Sonar$Class,
 sonar_train <- Sonar[train_index, ]
 sonar_test <- Sonar[-train_index, ]
 
+# Define train control with 5-fold cross-validation
+train_control <- trainControl(method = "cv", number = 5)
+
+# Train the logistic regression model
+set.seed(7)
+sonar_caret_model_logistic <- train(Class ~ ., data = sonar_train,
+                                    method = "glm", metric = "Accuracy",
+                                    preProcess = c("center", "scale"),
+                                    trControl = train_control)
+
+# Display the model's details
+print(sonar_caret_model_logistic)
+
+# Make predictions
+predictions <- predict(sonar_caret_model_logistic,
+                       sonar_test[, -ncol(sonar_test)])  # Exclude the last column which is the target variable
+
