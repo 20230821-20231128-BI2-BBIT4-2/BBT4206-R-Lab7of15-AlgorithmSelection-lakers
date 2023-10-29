@@ -210,4 +210,7 @@ train_index <- createDataPartition(mtcars$mpg, p = 0.7, list = FALSE)
 mtcars_train <- mtcars[train_index, ]
 mtcars_test <- mtcars[-train_index, ]
 
+# Train the model with decision tree using the rpart method
+train_control <- trainControl(method = "repeatedcv", number = 5, repeats = 3)
+model_cart <- train(mpg ~ ., data = mtcars, method = "rpart", metric = "RMSE", trControl = train_control)
 
