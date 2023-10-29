@@ -238,3 +238,5 @@ mae <- mean(absolute_errors)
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 
 
+##2a. Naïve Bayes Classifier for a Classification Problem with CARET
+
