@@ -510,4 +510,23 @@ sapply(iris_std[, sapply(iris_std, is.numeric)], sd)
 iris_vars <- iris[, c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")]
 
 # Create the clusters using the K-Means Clustering Algorithm
+set.seed(7)
+iris_kmeans <- kmeans(iris_vars, centers = 3, nstart = 20)
+
+# Define the maximum number of clusters to investigate
+n_clusters <- 8
+
+# Initialize the total within sum of squares error (wss)
+wss <- numeric(n_clusters)
+
+set.seed(7)
+
+# Investigate 1 to n possible clusters
+for (i in 1:n_clusters) {
+  # Apply the K Means clustering algorithm for each potential cluster count
+  kmeans_cluster <- kmeans(iris_vars, centers = i, nstart = 20)
+  # Store the within-cluster sum of squares
+  wss[i] <- kmeans_cluster$tot.withinss
+}
+
 
