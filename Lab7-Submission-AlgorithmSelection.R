@@ -314,3 +314,31 @@ set.seed(123)
 trainIndex <- createDataPartition(airquality[[target_var]], p = 0.8, list = FALSE)
 airq_train <- airquality[trainIndex, ]
 airq_test <- airquality[-trainIndex, ]
+
+# Apply the 5-fold cross-validation resampling method and standardize data
+train_control <- trainControl(method = "cv", number = 5)
+model_knn <- train(airq_train[predictors], airq_train[[target_var]], method = "knn",
+                   metric = "RMSE", preProcess = c("center", "scale"), trControl = train_control)
+
+# Display the model's details
+print(model_knn)
+
+# Make predictions on the test set
+predictions <- predict(model_knn, newdata = airq_test[predictors])
+
+# Calculate evaluation metrics for the model
+rmse <- sqrt(mean((airq_test[[target_var]] - predictions)^2))
+ssr <- sum((airq_test[[target_var]] - predictions)^2)
+sst <- sum((airq_test[[target_var]] - mean(airq_test[[target_var]]))^2)
+r_squared <- 1 - (ssr / sst)
+absolute_errors <- abs(predictions - airq_test[[target_var]])
+mae <- mean(absolute_errors)
+
+# Display the model's evaluation metrics
+print(paste("RMSE =", sprintf(rmse, fmt = "%#.4f")))
+print(paste("SSR =", sprintf(ssr, fmt = "%#.4f")))
+print(paste("SST =", sprintf(sst, fmt = "%#.4f")))
+print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
+print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
+
+
