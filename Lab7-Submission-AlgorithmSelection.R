@@ -253,4 +253,8 @@ sonar_test <- Sonar[-train_index, ]
 train_control <- trainControl(method = "cv", number = 5)
 model_nb <- train(Class ~ ., data = sonar_train, method = "nb", metric = "Accuracy", trControl = train_control)
 
+# Display the model's details
+print(model_nb)
 
+# Make predictions on the test set
+predictions <- predict(model_nb, newdata = sonar_test)
