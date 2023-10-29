@@ -104,7 +104,7 @@ print(sonar_model_lda)
 # Make predictions using the LDA model on the test set
 predictions <- predict(sonar_model_lda, newdata = sonar_test)$class
 
-# Display the model's evaluation metrics (confusion matrix)
+# Display the evaluation metrics (confusion matrix)
 table(predictions, sonar_test$Class)
 
 
