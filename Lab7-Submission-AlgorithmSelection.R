@@ -546,6 +546,28 @@ scree_plot +
     linetype = "dashed",
     col = c(rep("#000000", 5), "#FF0000", rep("#000000", 2))
   )
+# The plateau is reached at 6 clusters.
+# We therefore create the final cluster with 6 clusters
+# (not the initial 3 used at the beginning of this STEP.)
+k <- 6
+set.seed(7)
+# Build model with k clusters: kmeans_cluster
+kmeans_cluster <- kmeans(iris[, -5], centers = k, nstart = 20)
+
+# Add the cluster number as a label for each observation
+iris$cluster_id <- factor(kmeans_cluster$cluster)
+
+## View the results by plotting scatter plots with the labelled cluster 
+ggplot(iris, aes(Petal.Length, Petal.Width, color = cluster_id)) +
+  geom_point(alpha = 0.5) +
+  xlab("Petal Length") +
+  ylab("Petal Width")
+
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = cluster_id)) +
+  geom_point(alpha = 0.5) +
+  xlab("Sepal Length") +
+  ylab("Sepal Width")
+
 
 
 
