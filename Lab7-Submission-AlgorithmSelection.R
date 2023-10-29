@@ -139,3 +139,8 @@ train_index <- createDataPartition(diamonds$price, p = 0.7, list = FALSE)
 diamonds_train <- diamonds[train_index, ]
 diamonds_test <- diamonds[-train_index, ]
 
+# Train the model using glmnet (regularized linear regression)
+train_control <- trainControl(method = "cv", number = 5)
+diamonds_caret_model_glmnet <- train(price ~ ., data = diamonds_train, method = "glmnet",
+                                     metric = "RMSE", preProcess = c("center", "scale"),
+                                     trControl = train_control)
