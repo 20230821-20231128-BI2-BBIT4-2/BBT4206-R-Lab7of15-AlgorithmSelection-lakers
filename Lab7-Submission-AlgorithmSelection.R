@@ -181,4 +181,8 @@ train_index <- createDataPartition(Sonar$Class, p = 0.7, list = FALSE)
 sonar_train <- Sonar[train_index, ]
 sonar_test <- Sonar[-train_index, ]
 
+# Train the model using the rpart method (decision tree)
+train_control <- trainControl(method = "cv", number = 5)
+sonar_caret_model_rpart <- train(Class ~ ., data = sonar_train, method = "rpart",
+                                 metric = "Accuracy", trControl = train_control)
 
