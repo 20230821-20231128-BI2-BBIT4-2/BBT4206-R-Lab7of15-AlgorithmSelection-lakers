@@ -380,3 +380,7 @@ caret::plot(confusion_matrix$table, col = colorRampPalette(c("lightblue", "grey"
 ### 4b SVM classifier for a regression problem with CARET
 # Load the 'swiss' dataset
 data("swiss")
+
+# Define predictors and target variable
+predictors <- names(swiss)[1:5]  # Selecting the first 5 columns as predictors
+target_var <- "Fertility"  # Target variable for regression
