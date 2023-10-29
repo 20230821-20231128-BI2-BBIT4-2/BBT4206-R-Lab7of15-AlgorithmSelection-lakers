@@ -175,4 +175,10 @@ print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 library(mlbench)
 data("Sonar")
 
+# Define a 70:30 train:test data split of the dataset
+set.seed(123)  # For reproducibility
+train_index <- createDataPartition(Sonar$Class, p = 0.7, list = FALSE)
+sonar_train <- Sonar[train_index, ]
+sonar_test <- Sonar[-train_index, ]
+
 
