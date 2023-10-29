@@ -444,4 +444,27 @@ prop_miss(iris)
 miss_var_summary(iris)
 gg_miss_var(iris)
 
+# Compute the correlations between variables
+cor_matrix <- cor(iris[, -5])  # Calculate the correlation matrix (excluding the 'Species' column)
+
+# Basic Table (View the correlation matrix)
+View(cor_matrix)
+
+# Basic Plot (Correlation matrix using corrplot package)
+corrplot::corrplot(cor_matrix, method = "square")
+
+# Fancy Plot using ggplot2 (Heatmap visualization of the correlation matrix)
+library(ggplot2)
+library(reshape2)
+
+cor_matrix_melted <- melt(cor_matrix)
+
+p <- ggplot(cor_matrix_melted, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  geom_text(aes(label = round(value, 2)), size = 4) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(p)
+
 
