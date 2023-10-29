@@ -602,4 +602,29 @@ itemFrequencyPlot(groceries_transactions, topN = 10, type = "relative",
                   main = "Relative Item Frequency Plot",
                   horiz = TRUE)
 
+# Create a transactions object
+groceries_transactions <- as(Groceries, "transactions")
+
+# Set the minimum support, confidence, and maxlen
+min_support <- 0.01
+min_confidence <- 0.8
+maxlen <- 10
+
+# Option 1: Create association rules based on stock code
+association_rules_stock_code <- apriori(groceries_transactions,
+                                        parameter = list(support = min_support,
+                                                         confidence = min_confidence,
+                                                         maxlen = maxlen))
+
+# Option 2: Create association rules based on product name
+association_rules_product_name <- apriori(groceries_transactions,
+                                          parameter = list(support = min_support,
+                                                           confidence = min_confidence,
+                                                           maxlen = maxlen))
+
+
+
+
+
+
 
