@@ -364,3 +364,15 @@ train_control <- trainControl(method = "cv", number = 5)
 model_svm_radial <- train(iris_train[, predictors], iris_train[[target_var]],
                           method = "svmRadial", metric = "Accuracy", trControl = train_control)
 
+# Display the model's details
+print(model_svm_radial)
+
+# Make predictions
+predictions <- predict(model_svm_radial, iris_test[, predictors])
+
+# Display the model's evaluation metrics - Confusion Matrix
+confusion_matrix <- confusionMatrix(predictions, iris_test[[target_var]])
+print(confusion_matrix)
+
+# Visualize the confusion matrix using a heat map
+caret::plot(confusion_matrix$table, col = colorRampPalette(c("lightblue", "grey"))(20))
