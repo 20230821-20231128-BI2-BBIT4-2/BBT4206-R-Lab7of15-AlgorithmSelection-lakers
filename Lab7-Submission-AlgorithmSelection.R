@@ -93,3 +93,9 @@ train_index <- createDataPartition(Sonar$Class,
                                    list = FALSE)
 sonar_train <- Sonar[train_index, ]
 sonar_test <- Sonar[-train_index, ]
+
+# Train the LDA model
+library(MASS)  # Ensure MASS library is loaded for lda function
+sonar_model_lda <- lda(Class ~ ., data = sonar_train)
+
+
