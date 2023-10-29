@@ -298,3 +298,6 @@ print(confusion_matrix)
 fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), main = "Confusion Matrix")
 
 ###3b kNN for a regression problem with CARET's train function
+#Load dataset
+
+data("airquality")
