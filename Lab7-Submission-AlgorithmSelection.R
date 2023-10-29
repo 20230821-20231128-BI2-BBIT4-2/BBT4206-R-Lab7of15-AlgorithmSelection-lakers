@@ -384,3 +384,9 @@ data("swiss")
 # Define predictors and target variable
 predictors <- names(swiss)[1:5]  # Selecting the first 5 columns as predictors
 target_var <- "Fertility"  # Target variable for regression
+
+# Define an 80:20 train:test data split of the dataset
+set.seed(123)
+train_index <- createDataPartition(swiss[[target_var]], p = 0.8, list = FALSE)
+swiss_train <- swiss[train_index, ]
+swiss_test <- swiss[-train_index, ]
