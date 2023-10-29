@@ -107,4 +107,7 @@ predictions <- predict(sonar_model_lda, newdata = sonar_test)$class
 # Display the evaluation metrics (confusion matrix)
 table(predictions, sonar_test$Class)
 
+##Regularized Linear Regression Classification
+#Load dataset
+data("Sonar")
 
