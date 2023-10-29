@@ -341,4 +341,6 @@ print(paste("SST =", sprintf(sst, fmt = "%#.4f")))
 print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 
+## 4.  Support Vector Machine
+### 4a SVM Classifier for a classification problem with CARET
 
