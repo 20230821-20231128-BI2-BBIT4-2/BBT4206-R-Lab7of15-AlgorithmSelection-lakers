@@ -127,3 +127,7 @@ predictions <- ifelse(predict(sonar_model_glm, newx = X, type = "response") > 0.
 
 # Display evaluation metrics (confusion matrix)
 table(predictions, Sonar$Class)
+
+
+library(ggplot2)
+data("diamonds")
