@@ -349,4 +349,7 @@ library(caret)
 # Load the iris dataset (it's a built-in dataset)
 data(iris)
 
+# Define target variable and predictors for the iris dataset
+target_var <- "Species"  # Target variable
+predictors <- c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")  # Predictors
 
