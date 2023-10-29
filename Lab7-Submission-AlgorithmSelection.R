@@ -575,5 +575,31 @@ library(arules)
 # Load the Groceries dataset
 data("Groceries")
 
+# View the structure of the Groceries dataset
+str(Groceries)
+
+# Show the first few transactions
+inspect(head(Groceries))
+
+# Create a transactions object
+groceries_transactions <- as(Groceries, "transactions")
+
+# Get item frequency
+item_freq <- itemFrequency(groceries_transactions)
+
+# Sort item frequency in descending order
+sorted_freq <- sort(item_freq, decreasing = TRUE)
+
+# Plotting the top 10 absolute item frequencies
+itemFrequencyPlot(groceries_transactions, topN = 10, type = "absolute",
+                  col = brewer.pal(8, "Pastel2"),
+                  main = "Absolute Item Frequency Plot",
+                  horiz = TRUE)
+
+# Plotting the top 10 relative item frequencies
+itemFrequencyPlot(groceries_transactions, topN = 10, type = "relative",
+                  col = brewer.pal(8, "Pastel2"),
+                  main = "Relative Item Frequency Plot",
+                  horiz = TRUE)
 
 
