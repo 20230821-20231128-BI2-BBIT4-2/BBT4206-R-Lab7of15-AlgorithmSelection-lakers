@@ -301,3 +301,7 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), m
 #Load dataset
 
 data("airquality")
+
+# Define a target variable and predictors for regression
+target_var <- "Ozone"  # Target variable
+predictors <- c("Solar.R", "Wind", "Temp")  # Predictors for the regression
