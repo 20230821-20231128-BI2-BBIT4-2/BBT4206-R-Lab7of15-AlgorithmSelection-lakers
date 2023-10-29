@@ -376,3 +376,5 @@ print(confusion_matrix)
 
 # Visualize the confusion matrix using a heat map
 caret::plot(confusion_matrix$table, col = colorRampPalette(c("lightblue", "grey"))(20))
+
+### 4b SVM classifier for a regression problem with CARET
