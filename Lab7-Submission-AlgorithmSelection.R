@@ -119,3 +119,11 @@ y <- ifelse(Sonar$Class == "M", 1, 0)  # Target variable with binary encoding
 # Train the regularized logistic regression model using glmnet
 sonar_model_glm <- glmnet(X, y, family = "binomial", alpha = 0.5, lambda = 0.001)
 
+# Display model's details
+print(sonar_model_glm)
+
+# Make predictions on the Sonar dataset using the trained model
+predictions <- ifelse(predict(sonar_model_glm, newx = X, type = "response") > 0.5, "M", "R")
+
+# Display evaluation metrics (confusion matrix)
+table(predictions, Sonar$Class)
