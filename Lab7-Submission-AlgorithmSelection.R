@@ -305,3 +305,9 @@ data("airquality")
 # Define a target variable and predictors for regression
 target_var <- "Ozone"  # Target variable
 predictors <- c("Solar.R", "Wind", "Temp")  # Predictors for the regression
+
+# Split the data into train and test sets
+set.seed(123)
+trainIndex <- createDataPartition(airquality[[target_var]], p = 0.8, list = FALSE)
+airq_train <- airquality[trainIndex, ]
+airq_test <- airquality[-trainIndex, ]
