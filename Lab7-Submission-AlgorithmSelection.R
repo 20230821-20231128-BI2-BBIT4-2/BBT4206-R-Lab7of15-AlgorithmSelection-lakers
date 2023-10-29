@@ -467,4 +467,36 @@ p <- ggplot(cor_matrix_melted, aes(Var1, Var2, fill = value)) +
 
 print(p)
 
+# Scatter plot comparing Sepal Length vs. Sepal Width with Species differentiation
+library(ggplot2)
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species, shape = Species)) +
+  geom_point(alpha = 0.5) +
+  xlab("Sepal Length") +
+  ylab("Sepal Width")
+
+# Scatter plot comparing Petal Length vs. Petal Width with Species differentiation
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species, shape = Species)) +
+  geom_point(alpha = 0.5) +
+  xlab("Petal Length") +
+  ylab("Petal Width")
+
+# Scatter plot comparing Sepal Length vs. Petal Length with Species differentiation
+ggplot(iris, aes(Sepal.Length, Petal.Length, color = Species, shape = Species)) +
+  geom_point(alpha = 0.5) +
+  xlab("Sepal Length") +
+  ylab("Petal Length")
+
+# Scatter plot comparing Sepal Width vs. Petal Width with Species differentiation
+ggplot(iris, aes(Sepal.Width, Petal.Width, color = Species, shape = Species)) +
+  geom_point(alpha = 0.5) +
+  xlab("Sepal Width") +
+  ylab("Petal Width")
+
+# Scatter plot comparing Sepal Length vs. Petal Width with Species differentiation
+ggplot(iris, aes(Sepal.Length, Petal.Width, color = Species, shape = Species)) +
+  geom_point(alpha = 0.5) +
+  xlab("Sepal Length") +
+  ylab("Petal Width")
+
+
 
