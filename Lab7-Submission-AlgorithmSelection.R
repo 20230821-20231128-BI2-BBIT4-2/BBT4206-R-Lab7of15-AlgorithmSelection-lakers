@@ -15,3 +15,12 @@ train_index <- createDataPartition(diamonds$price,
                                    list = FALSE)
 diamonds_train <- diamonds[train_index, ]
 diamonds_test <- diamonds[-train_index, ]
+
+# Train the linear regression model
+diamonds_model_lm <- lm(price ~ ., diamonds_train)
+
+# Display the model's details
+summary(diamonds_model_lm)
+
+# Make predictions on the test set
+predictions <- predict(diamonds_model_lm, newdata = diamonds_test)
