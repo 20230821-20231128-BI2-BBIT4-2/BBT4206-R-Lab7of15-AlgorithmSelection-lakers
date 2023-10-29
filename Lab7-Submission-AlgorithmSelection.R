@@ -425,3 +425,5 @@ absolute_errors <- abs(predictions - swiss_test[[target_var]])
 mae <- mean(absolute_errors)
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 
+
+
