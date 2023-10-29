@@ -357,3 +357,10 @@ predictors <- c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")  #
 train_index <- createDataPartition(iris[[target_var]], p = 0.7, list = FALSE)
 iris_train <- iris[train_index, ]
 iris_test <- iris[-train_index, ]
+
+# Train the LSVM model with radial kernel
+set.seed(7)
+train_control <- trainControl(method = "cv", number = 5)
+model_svm_radial <- train(iris_train[, predictors], iris_train[[target_var]],
+                          method = "svmRadial", metric = "Accuracy", trControl = train_control)
+
