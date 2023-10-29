@@ -395,3 +395,10 @@ swiss_test <- swiss[-train_index, ]
 train_control <- trainControl(method = "cv", number = 5)
 model_svm_reg <- train(swiss_train[, predictors], swiss_train[[target_var]], 
                        method = "svmLinear", trControl = train_control)
+
+# Display the model's details
+print(model_svm_reg)
+
+# Make predictions
+predictions <- predict(model_svm_reg, newdata = swiss_test[, predictors])
+
