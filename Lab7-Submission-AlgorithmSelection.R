@@ -98,4 +98,7 @@ sonar_test <- Sonar[-train_index, ]
 library(MASS)  # Ensure MASS library is loaded for lda function
 sonar_model_lda <- lda(Class ~ ., data = sonar_train)
 
+# Display the model's details
+print(sonar_model_lda)
+
 
