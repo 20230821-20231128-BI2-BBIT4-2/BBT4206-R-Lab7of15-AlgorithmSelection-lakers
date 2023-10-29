@@ -201,5 +201,18 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
              main = "Confusion Matrix")
 
 ## 1b Decision tree for a regression problem with CARET
+# Load the mtcars dataset
+data("mtcars")
+
+# Perform regression analysis or build decision tree models with mtcars dataset
+
+# install.packages("rpart") 
+library(rpart)
+
+# fitting a decision tree on mtcars dataset
+model <- rpart(mpg ~ ., data = mtcars)  # 'mpg' is the target variable
+
+# Summary of the fitted decision tree model
+summary(model)
 
 
