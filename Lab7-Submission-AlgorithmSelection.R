@@ -111,3 +111,11 @@ table(predictions, sonar_test$Class)
 #Load dataset
 data("Sonar")
 
+library(glmnet)
+# Separate predictors (X) and target variable (y)
+X <- as.matrix(Sonar[, -ncol(Sonar)])  # Features (all columns except the last one)
+y <- ifelse(Sonar$Class == "M", 1, 0)  # Target variable with binary encoding
+
+# Train the regularized logistic regression model using glmnet
+sonar_model_glm <- glmnet(X, y, family = "binomial", alpha = 0.5, lambda = 0.001)
+
