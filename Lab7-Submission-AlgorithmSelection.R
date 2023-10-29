@@ -1,3 +1,4 @@
+#### 7a - Algorithm Selection for Classification and Regression
 # A. Linear Algorithms
 ## 1. Linear Regression
 
