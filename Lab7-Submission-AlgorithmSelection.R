@@ -147,3 +147,23 @@ diamonds_caret_model_glmnet <- train(price ~ ., data = diamonds_train, method = 
 # Display the model's details
 print(diamonds_caret_model_glmnet)
 
+# Make predictions on the test set
+predictions <- predict(diamonds_caret_model_glmnet, newdata = diamonds_test)
+
+# Calculate evaluation metrics
+rmse <- sqrt(mean((diamonds_test$price - predictions)^2))
+print(paste("RMSE =", sprintf(rmse, fmt = "%#.4f")))
+
+ssr <- sum((diamonds_test$price - predictions)^2)
+print(paste("SSR =", sprintf(ssr, fmt = "%#.4f")))
+
+sst <- sum((diamonds_test$price - mean(diamonds_test$price))^2)
+print(paste("SST =", sprintf(sst, fmt = "%#.4f")))
+
+r_squared <- 1 - (ssr / sst)
+print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
+
+absolute_errors <- abs(predictions - diamonds_test$price)
+mae <- mean(absolute_errors)
+print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
+
