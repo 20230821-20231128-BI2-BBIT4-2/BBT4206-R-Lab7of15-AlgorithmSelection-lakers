@@ -390,3 +390,8 @@ set.seed(123)
 train_index <- createDataPartition(swiss[[target_var]], p = 0.8, list = FALSE)
 swiss_train <- swiss[train_index, ]
 swiss_test <- swiss[-train_index, ]
+
+# Train the model using SVM regression
+train_control <- trainControl(method = "cv", number = 5)
+model_svm_reg <- train(swiss_train[, predictors], swiss_train[[target_var]], 
+                       method = "svmLinear", trControl = train_control)
