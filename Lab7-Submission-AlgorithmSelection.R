@@ -506,5 +506,5 @@ iris_std <- predict(model_of_the_transform, iris)
 summary(iris_std)
 sapply(iris_std[, sapply(iris_std, is.numeric)], sd)
 
-
+## Select the features to use to create the clusters
 
