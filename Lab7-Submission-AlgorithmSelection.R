@@ -507,4 +507,7 @@ summary(iris_std)
 sapply(iris_std[, sapply(iris_std, is.numeric)], sd)
 
 ## Select the features to use to create the clusters
+iris_vars <- iris[, c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")]
+
+# Create the clusters using the K-Means Clustering Algorithm
 
