@@ -498,5 +498,13 @@ ggplot(iris, aes(Sepal.Length, Petal.Width, color = Species, shape = Species)) +
   xlab("Sepal Length") +
   ylab("Petal Width")
 
+#Transform the data
+summary(iris)
+model_of_the_transform <- preProcess(iris, method = c("scale", "center"))
+print(model_of_the_transform)
+iris_std <- predict(model_of_the_transform, iris)
+summary(iris_std)
+sapply(iris_std[, sapply(iris_std, is.numeric)], sd)
+
 
 
