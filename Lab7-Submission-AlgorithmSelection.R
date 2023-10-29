@@ -144,3 +144,6 @@ train_control <- trainControl(method = "cv", number = 5)
 diamonds_caret_model_glmnet <- train(price ~ ., data = diamonds_train, method = "glmnet",
                                      metric = "RMSE", preProcess = c("center", "scale"),
                                      trControl = train_control)
+# Display the model's details
+print(diamonds_caret_model_glmnet)
+
