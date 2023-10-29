@@ -167,3 +167,12 @@ absolute_errors <- abs(predictions - diamonds_test$price)
 mae <- mean(absolute_errors)
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 
+# B. Non-Linear Algorithms#
+## 1.  Classification and Regression Trees
+#1.a. Decision tree for a classification problem with caret
+
+#Load dataset
+library(mlbench)
+data("Sonar")
+
+
