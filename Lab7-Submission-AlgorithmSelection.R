@@ -267,3 +267,4 @@ print(confusion_matrix)
 fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), main = "Confusion Matrix")
 
 ## 3.  k-Nearest Neighbours
+### 3a kNN for a classification problem with CARET's train function
