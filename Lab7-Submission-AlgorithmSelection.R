@@ -249,3 +249,8 @@ train_index <- createDataPartition(Sonar$Class, p = 0.7, list = FALSE)
 sonar_train <- Sonar[train_index, ]
 sonar_test <- Sonar[-train_index, ]
 
+# Train the Naive Bayes model using 5-fold cross-validation
+train_control <- trainControl(method = "cv", number = 5)
+model_nb <- train(Class ~ ., data = sonar_train, method = "nb", metric = "Accuracy", trControl = train_control)
+
+
