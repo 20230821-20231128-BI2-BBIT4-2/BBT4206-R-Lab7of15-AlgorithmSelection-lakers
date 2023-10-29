@@ -107,7 +107,7 @@ predictions <- predict(sonar_model_lda, newdata = sonar_test)$class
 # Display the evaluation metrics (confusion matrix)
 table(predictions, sonar_test$Class)
 
-##Regularized Linear Regression Classification
+## 4a Regularized Linear Regression Classification
 #Load dataset
 data("Sonar")
 
@@ -128,7 +128,14 @@ predictions <- ifelse(predict(sonar_model_glm, newx = X, type = "response") > 0.
 # Display evaluation metrics (confusion matrix)
 table(predictions, Sonar$Class)
 
-### Regularized Linear Regression Regression
+### 4b Regularized Linear Regression Regression
 #Load dataset
 library(ggplot2)
 data("diamonds")
+
+# Define a 70:30 train:test data split of the dataset
+set.seed(123)  # For reproducibility
+train_index <- createDataPartition(diamonds$price, p = 0.7, list = FALSE)
+diamonds_train <- diamonds[train_index, ]
+diamonds_test <- diamonds[-train_index, ]
+
