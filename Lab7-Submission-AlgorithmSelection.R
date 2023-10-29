@@ -204,15 +204,10 @@ fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
 # Load the mtcars dataset
 data("mtcars")
 
-# Perform regression analysis or build decision tree models with mtcars dataset
-
-# install.packages("rpart") 
-library(rpart)
-
-# fitting a decision tree on mtcars dataset
-model <- rpart(mpg ~ ., data = mtcars)  # 'mpg' is the target variable
-
-# Summary of the fitted decision tree model
-summary(model)
+# Split the mtcars dataset into training and testing sets (70:30 split)
+set.seed(123)  # For reproducibility
+train_index <- createDataPartition(mtcars$mpg, p = 0.7, list = FALSE)
+mtcars_train <- mtcars[train_index, ]
+mtcars_test <- mtcars[-train_index, ]
 
 
