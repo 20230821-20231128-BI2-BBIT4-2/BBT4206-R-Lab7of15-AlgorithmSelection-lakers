@@ -529,4 +529,23 @@ for (i in 1:n_clusters) {
   wss[i] <- kmeans_cluster$tot.withinss
 }
 
+#Scree plot
+wss_df <- data.frame(clusters = 1:n_clusters, wss = wss)
+
+scree_plot <- ggplot(wss_df, aes(x = clusters, y = wss, group = 1)) +
+  geom_point(size = 4) +
+  geom_line() +
+  scale_x_continuous(breaks = c(2, 4, 6, 8)) +
+  xlab("Number of Clusters")
+
+scree_plot
+
+scree_plot +
+  geom_hline(
+    yintercept = wss,
+    linetype = "dashed",
+    col = c(rep("#000000", 5), "#FF0000", rep("#000000", 2))
+  )
+
+
 
