@@ -568,6 +568,6 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width, color = cluster_id)) +
   xlab("Sepal Length") +
   ylab("Sepal Width")
 
-
+###7c: Algorithm Selection for Association Rule Learning
 
 
