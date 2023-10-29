@@ -186,3 +186,17 @@ train_control <- trainControl(method = "cv", number = 5)
 sonar_caret_model_rpart <- train(Class ~ ., data = sonar_train, method = "rpart",
                                  metric = "Accuracy", trControl = train_control)
 
+# Display the model's details
+print(sonar_caret_model_rpart)
+
+# Make predictions on the test set
+predictions <- predict(sonar_caret_model_rpart, newdata = sonar_test)
+
+# Display the model's evaluation metrics (confusion matrix)
+confusion_matrix <- confusionMatrix(predictions, sonar_test$Class)
+print(confusion_matrix)
+
+# Plot the confusion matrix
+fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"),
+             main = "Confusion Matrix")
+
