@@ -284,3 +284,16 @@ train_control <- trainControl(method = "cv", number = 10)
 model_knn <- train(Class ~ ., data = sonar_train, method = "knn", metric = "Accuracy",
                    preProcess = c("center", "scale"), trControl = train_control)
 
+# Display the model's details
+print(model_knn)
+
+# Make predictions on the test set
+predictions <- predict(model_knn, newdata = sonar_test)
+
+# Display the model's evaluation metrics (confusion matrix)
+confusion_matrix <- confusionMatrix(predictions, sonar_test$Class)
+print(confusion_matrix)
+
+# Plot the confusion matrix
+fourfoldplot(as.table(confusion_matrix$table), color = c("grey", "lightblue"), main = "Confusion Matrix")
+
