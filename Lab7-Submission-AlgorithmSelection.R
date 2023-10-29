@@ -425,6 +425,17 @@ absolute_errors <- abs(predictions - swiss_test[[target_var]])
 mae <- mean(absolute_errors)
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
 
-# 7b Algorithm Selection for Clustering 
+# 7b Algorithm Selection for Clustering
+#Load dataset
+data(iris)
+# Display structure of Iris dataset
+str(iris)
+# Get dimensions of Iris dataset
+dim(iris)
+# Display the first few rows of the Iris dataset
+head(iris)
+# Summary statistics of Iris dataset
+summary(iris)
+
 
 
