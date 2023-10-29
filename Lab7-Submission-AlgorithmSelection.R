@@ -41,3 +41,11 @@ print(paste("R Squared =", sprintf(r_squared, fmt = "%#.4f")))
 absolute_errors <- abs(predictions - diamonds_test$price)
 mae <- mean(absolute_errors)
 print(paste("MAE =", sprintf(mae, fmt = "%#.4f")))
+
+##2. Logistic Regression
+library(datasets)
+
+# Load the Sonar dataset from the mlbench package
+library(mlbench)
+data(Sonar)
+
