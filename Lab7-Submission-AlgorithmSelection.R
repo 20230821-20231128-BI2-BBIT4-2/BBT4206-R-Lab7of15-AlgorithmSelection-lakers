@@ -214,3 +214,7 @@ mtcars_test <- mtcars[-train_index, ]
 train_control <- trainControl(method = "repeatedcv", number = 5, repeats = 3)
 model_cart <- train(mpg ~ ., data = mtcars, method = "rpart", metric = "RMSE", trControl = train_control)
 
+# Display the model's details
+print(model_cart)
+
+
