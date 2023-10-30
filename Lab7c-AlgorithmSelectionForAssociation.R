@@ -105,7 +105,7 @@ if (require("languageserver")) {
                    repos = "https://cloud.r-project.org")
 }
 
-# Introduction ----
+s# Introduction ----
 
 # Association rule learning helps to boost business by determining which items
 # are bought together.
